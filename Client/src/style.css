@@ -65,8 +65,12 @@ input[type=number]::-webkit-outer-spin-button
     display:inline-block;
     width:180px !important;
 }
+.heading-label {
+    font-size: 20px;
+    margin: auto;
+}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 655px) {
 
     .language-selector-btn {
         width: 100px;
