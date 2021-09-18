@@ -2,15 +2,16 @@
 import React, { Component } from 'react';
 import { withResizeDetector } from 'react-resize-detector';
 import Swal from 'sweetalert2'
+import { LangProvider } from '../services/LangContext';
 import Header from './Header.component'
 
 class MainComponent extends Component 
 {
     render() 
     { 
-		return <div>
-                <Header/>
-            </div>;
+		return  <LangProvider>
+                    <Header/>
+                </LangProvider>;
     }
 
 }

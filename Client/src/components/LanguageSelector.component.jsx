@@ -4,17 +4,14 @@ import { useState } from 'react';
 import Flags from 'country-flag-icons/react/3x2';
 import { hasFlag } from 'country-flag-icons'
 import Constants from '../Utils/Constants'
-
-import Actions from "../Store/Actions";
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import LangService from '../services/LangService'
+import LangContext from '../services/LangContext'
 
 function LanguageSelector(props) {
     const [showDropdown, setShowDropdown] = useState("none");
     const [langList, setLangList] = useState(Constants.LanguageCodes);
+    const [selectedLang, setSelectedLang] = useState({});
     const [search, setSearch] = useState("");
-    
-    const dispatch = useDispatch();
-    const selectedLang = useSelector(state => state.selectedLang);
 
     const toggleDropdown = function() {
         searchChange("");
@@ -24,11 +21,9 @@ function LanguageSelector(props) {
 
     const langChange = function(lang) {
         const req = {langCode:lang.code};
-        service.setSelectedLang(req).then(response => {
-            newState.selectedLang = {...action.payload};
-            newState.LangMapList = [...response.LangMapList];
-            dispatch(Actions.SetSelectedLang(lang));
-            return newState;
+        let service = new LangService();
+        service.setSelectedLang(req).then(res => {
+            setSelectedLang(lang);
         });
         toggleDropdown();
     };
