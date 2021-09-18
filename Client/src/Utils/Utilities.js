@@ -3,8 +3,7 @@
 class Utilities
 {
 		
-	static pad(number, length) 
-	{
+	static pad(number, length)  {
 		var str = '' + number;
 		while (str.length < length) {
 			str = '0' + str;
@@ -12,8 +11,7 @@ class Utilities
 		return str;
 	}
 
-	static DateToString(date) 
-	{
+	static DateToString(date)  {
 		var yyyy = date.getFullYear().toString();
 		var MM = this.pad(date.getMonth() + 1,2);
 		var dd = this.pad(date.getDate(), 2);
@@ -24,7 +22,6 @@ class Utilities
 		return yyyy + MM + dd+  hh + mm + ss;
 	}
 
-	
 }
 
 export default Utilities;

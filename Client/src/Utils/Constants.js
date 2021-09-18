@@ -1,43 +1,19 @@
 
-class Constants
-{   
-    static get TaskAction()
-    {
-        const TaskAction = {
-            ToggleForm: "ToggleForm",
-            SetDisplayTask: "SetDisplayTask",
-            GetState: "GetState",
-            Create_Task_Toggle: "Create_Task_Toggle",
-            Create_Task_Submit: "Create_Task_Submit",
-            Edit_Task_Toggle : "Edit_Task_Toggle",
-            Edit_Task_Submit: "Edit_Task_Submit",
-            Update_Status: "Update_Status",
-            Delete: "Delete"
+class Constants {   
+    static get Actions() {
+        return {
+            SetSelectedLang: "SetSelectedLang"
         };
-        return TaskAction;
     }
-
-    static get TaskStatus()
-    {
-        const TaskStatus = {
-            TODO: "TODO",
-            ONGOING: "ONGOING",
-            DONE: "DONE"
+    
+    static get APIUrl() {
+        return {
+            base: "http://localhost:4000/api/",
+            langService: "langService/"
         };
-        return TaskStatus;
     }
-
-    static get TaskType()
-    {
-        const TaskType = {
-            FEATURE: "FEATURE",
-            BUG: "BUG"
-        };
-        return TaskType;
-    }
-
-    static get LanguageCodes()
-    {
+    
+    static get LanguageCodes() {
         const languageCodes = [
             {code:"af-ZA", desc:"Afrikaans (South Africa)"},
             {code:"ar-AE", desc:"Arabic (U.A.E.)"},

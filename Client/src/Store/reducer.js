@@ -1,20 +1,28 @@
 
 import Constants from "../Utils/Constants";
-import Utilities from "../Utils/Utilities";
-import Actions from "../Store/Actions";
+import LangService from "../services/LangService";
 
 let lastId = 0;
-const defaultState = {tasks:[], openTasks:[], shownTaskId:-1};
+const defaultState = {selectedLang:{}, LangMapList:[]};
 
-function reducer(state = defaultState, action) 
+export default function reducer(state = defaultState, action) 
 {
+    let service = new LangService();
     switch(action.type) 
     {
-        case Constants.TaskAction.ToggleForm: {
-            let newState = {...state};
-            newState.taskForm = action.payload.taskForm;
-            newState.openTasks = newState.tasks.filter(x => x.status != Constants.TaskStatus.DONE);
-            return newState;
+        case Constants.Actions.SetSelectedLang: {
+            let newCode = action.payload.code;
+            let oldCode = state.selectedLang.code;
+            if(newCode !== oldCode) {
+                let newState = {...state};
+                service.setSelectedLang().then( response => {
+                    newState.selectedLang = {...action.payload};
+                    newState.LangMapList = [...response.LangMapList];
+                    return newState;
+                });
+            }
+            else
+                return state;
         }
         
         default: {
@@ -22,6 +30,3 @@ function reducer(state = defaultState, action)
         }
     }
 }
-
-export default reducer;
-
