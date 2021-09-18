@@ -5,7 +5,7 @@ import Flags from 'country-flag-icons/react/3x2';
 import { hasFlag } from 'country-flag-icons'
 import Constants from '../Utils/Constants'
 import LangService from '../services/LangService'
-import LangContext from '../services/LangContext'
+import { useLang } from '../services/LangContext'
 
 function LanguageSelector(props) {
     const [showDropdown, setShowDropdown] = useState("none");

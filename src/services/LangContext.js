@@ -8,9 +8,13 @@ export function useLang() {
 }
 
 export function LangProvider({ children }) {
+    const [selectedLang, setSelectedLang] = useState({});
     const [languageMap, setLanguageMap] = useState({});
 
+
+
     const value = {
+        selectedLang,
         languageMap
     };
 
